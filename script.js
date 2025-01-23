@@ -1,3 +1,5 @@
+console.log("JavaScript file is loaded!");
+
 // Initialize resources
 let food = 10;
 let water = 10;
