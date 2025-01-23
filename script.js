@@ -1,51 +1,33 @@
-let resources = {
-  food: 10,
-  water: 10,
-  energy: 10,
-};
+// Initialize resources
+let food = 10;
+let water = 10;
+let energy = 10;
 
-function updateUI() {
-  document.getElementById('food').textContent = resources.food;
-  document.getElementById('water').textContent = resources.water;
-  document.getElementById('energy').textContent = resources.energy;
-}
-
+// Function to gather food
 function gatherFood() {
-  resources.food += 1;
-  resources.energy -= 1;
-  checkGameOver();
-  updateUI();
+  food += 1; // Increase food count
+  document.getElementById("food").textContent = food; // Update display
+  console.log("Gathered food! Current food:", food);
 }
 
+// Function to drink water
 function drinkWater() {
-  resources.water += 1;
-  resources.energy -= 1;
-  checkGameOver();
-  updateUI();
-}
-
-function rest() {
-  resources.energy += 2;
-  checkGameOver();
-  updateUI();
-}
-
-function checkGameOver() {
-  if (resources.food <= 0 || resources.water <= 0 || resources.energy <= 0) {
-    alert('Game Over! Try again.');
-    resetGame();
+  if (water > 0) {
+    water -= 1; // Decrease water count
+    document.getElementById("water").textContent = water; // Update display
+    console.log("Drank water! Current water:", water);
+  } else {
+    alert("No water left!");
   }
 }
 
-function resetGame() {
-  resources = { food: 10, water: 10, energy: 10 };
-  updateUI();
+// Function to rest and regain energy
+function rest() {
+  if (energy < 10) {
+    energy += 1; // Increase energy count
+    document.getElementById("energy").textContent = energy; // Update display
+    console.log("Rested! Current energy:", energy);
+  } else {
+    alert("Energy is already full!");
+  }
 }
-
-setInterval(() => {
-  resources.food -= 1;
-  resources.water -= 1;
-  updateUI();
-}, 5000);
-
-updateUI();
