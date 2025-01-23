@@ -23,13 +23,13 @@ function drinkWater() {
   }
 }
 
-// Function to rest and regain energy
+// Function to rest and regain energy (maximum energy is 100)
 function rest() {
-  if (energy < 10) {
+  if (energy < 100) { // Limit energy to 100
     energy += 1; // Increase energy count
     document.getElementById("energy").textContent = energy; // Update display
     console.log("Rested! Current energy:", energy);
   } else {
-    alert("Energy is already full!");
+    alert("Energy is already full (100)!");
   }
 }
