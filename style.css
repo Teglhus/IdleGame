@@ -1,0 +1,13 @@
+#game {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+#resources p {
+  font-size: 18px;
+}
+#actions button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
