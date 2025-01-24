@@ -16,20 +16,22 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .resource-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 300px;
+  justify-content: center;
+  width: 400px; /* Increased width for better alignment */
+  gap: 10px;
 }
 
-.resource-container p {
+.label {
   margin: 0;
   font-size: 1rem;
-  text-align: left;
+  text-align: right;
+  width: 50px; /* Right-align space for labels */
 }
 
 .gauge-container {
@@ -39,7 +41,7 @@ h1 {
 }
 
 .gauge {
-  width: 150px; /* Smaller width */
+  width: 200px; /* Adjusted width */
   height: 15px; /* Smaller height */
   background-color: #ddd;
   border-radius: 10px;
@@ -59,6 +61,8 @@ h1 {
 #water-indicator,
 #energy-indicator {
   font-size: 0.9rem;
+  width: 60px; /* Space for consistent vertical alignment */
+  text-align: left;
 }
 
 button {
