@@ -1,31 +1,33 @@
 // Initialize resources
-let food = 10;
-let water = 10;
-let energy = 100;
+let food = 0;
+let water = 0;
+let energy = 0;
+const maxFood = 10;
+const maxWater = 10;
 const maxEnergy = 100;
 
 // Sync initial resource values with the HTML display
-document.getElementById("food").textContent = `${food}`;
-document.getElementById("water").textContent = `${water}`;
+updateDisplay();
 
 // Function to update the display
 function updateDisplay() {
-  document.getElementById("food").textContent = `${food}`;
-  document.getElementById("water").textContent = `${water}`;
+  // Update food gauge
+  const foodBar = document.getElementById("food-bar");
+  const foodPercentage = (food / maxFood) * 100;
+  foodBar.style.width = `${foodPercentage}%`;
+  foodBar.style.backgroundColor = foodPercentage > 50 ? "green" : foodPercentage > 10 ? "yellow" : "red";
 
-  // Update the energy gauge
+  // Update water gauge
+  const waterBar = document.getElementById("water-bar");
+  const waterPercentage = (water / maxWater) * 100;
+  waterBar.style.width = `${waterPercentage}%`;
+  waterBar.style.backgroundColor = waterPercentage > 50 ? "green" : waterPercentage > 10 ? "yellow" : "red";
+
+  // Update energy gauge
   const energyBar = document.getElementById("energy-bar");
   const energyPercentage = (energy / maxEnergy) * 100;
   energyBar.style.width = `${energyPercentage}%`;
-
-  // Change the color of the energy gauge based on energy level
-  if (energyPercentage > 50) {
-    energyBar.style.backgroundColor = "green";
-  } else if (energyPercentage > 10) {
-    energyBar.style.backgroundColor = "yellow";
-  } else {
-    energyBar.style.backgroundColor = "red";
-  }
+  energyBar.style.backgroundColor = energyPercentage > 50 ? "green" : energyPercentage > 10 ? "yellow" : "red";
 
   // Change the "rest" button color based on energy level
   const restButton = document.getElementById("restButton");
@@ -40,19 +42,23 @@ function updateDisplay() {
 
 // Function to gather food
 function gatherFood() {
-  food += 1; // Increase food count
-  updateDisplay();
-  console.log("Gathered food! Current food:", food);
+  if (food < maxFood) {
+    food += 1; // Increase food count
+    updateDisplay();
+    console.log("Gathered food! Current food:", food);
+  } else {
+    console.log("Food is full!");
+  }
 }
 
 // Function to drink water
 function drinkWater() {
-  if (water > 0) {
-    water -= 1; // Decrease water count
+  if (water < maxWater) {
+    water += 1; // Increase water count
     updateDisplay();
     console.log("Drank water! Current water:", water);
   } else {
-    alert("No water left!");
+    console.log("Water is full!");
   }
 }
 

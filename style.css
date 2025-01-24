@@ -14,26 +14,26 @@ h1 {
 
 #resources p {
   font-size: 1.2rem;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
-#energy-container {
+#gauge-container {
   margin-top: 15px;
 }
 
-#energy-gauge {
-  width: 300px;
-  height: 20px;
+.gauge {
+  width: 200px; /* Smaller gauge width */
+  height: 15px; /* Smaller gauge height */
   background-color: #ddd;
   border-radius: 10px;
-  margin: 10px auto;
+  margin: 5px auto;
   position: relative;
   overflow: hidden;
 }
 
-#energy-bar {
+.gauge div {
   height: 100%;
-  width: 100%; /* Default full energy */
+  width: 100%;
   background: green; /* Initial color */
   border-radius: 10px;
   transition: width 0.3s ease, background-color 0.3s ease; /* Smooth gauge and color transitions */
