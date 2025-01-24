@@ -2,16 +2,34 @@
 let food = 10;
 let water = 10;
 let energy = 10;
+const maxEnergy = 100;
 
 // Sync initial resource values with the HTML display
-document.getElementById("food").textContent = food;
-document.getElementById("water").textContent = water;
-document.getElementById("energy").textContent = energy;
+document.getElementById("food").textContent = `${food}`;
+document.getElementById("water").textContent = `${water}`;
+document.getElementById("energy").textContent = `${energy} / ${maxEnergy}`;
+
+// Function to update the display
+function updateDisplay() {
+  document.getElementById("food").textContent = `${food}`;
+  document.getElementById("water").textContent = `${water}`;
+  document.getElementById("energy").textContent = `${energy} / ${maxEnergy}`;
+
+  // Change the "rest" button color based on energy level
+  const restButton = document.getElementById("restButton");
+  if (energy >= maxEnergy) {
+    restButton.classList.add("red"); // Add the red class
+    restButton.disabled = true; // Disable the button if energy is full
+  } else {
+    restButton.classList.remove("red"); // Remove the red class
+    restButton.disabled = false;
+  }
+}
 
 // Function to gather food
 function gatherFood() {
   food += 1; // Increase food count
-  document.getElementById("food").textContent = food; // Update display
+  updateDisplay();
   console.log("Gathered food! Current food:", food);
 }
 
@@ -19,20 +37,21 @@ function gatherFood() {
 function drinkWater() {
   if (water > 0) {
     water -= 1; // Decrease water count
-    document.getElementById("water").textContent = water; // Update display
+    updateDisplay();
     console.log("Drank water! Current water:", water);
   } else {
     alert("No water left!");
   }
 }
 
-// Function to rest and regain energy (maximum energy is 100)
+// Function to rest and regain energy
 function rest() {
-  if (energy < 100) { // Limit energy to 100
+  if (energy < maxEnergy) { // Limit energy to maxEnergy
     energy += 1; // Increase energy count
-    document.getElementById("energy").textContent = energy; // Update display
+    updateDisplay();
     console.log("Rested! Current energy:", energy);
-  } else {
-    alert("Energy is already full (100)!");
   }
 }
+
+// Update the display when the game starts
+updateDisplay();
