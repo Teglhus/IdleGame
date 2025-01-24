@@ -34,9 +34,9 @@ h1 {
 #energy-bar {
   height: 100%;
   width: 100%; /* Default full energy */
-  background-color: #28a745;
+  background: green; /* Initial color */
   border-radius: 10px;
-  transition: width 0.3s ease; /* Smooth transition for gauge changes */
+  transition: width 0.3s ease, background-color 0.3s ease; /* Smooth gauge and color transitions */
 }
 
 button {
