@@ -1,19 +1,22 @@
 // Initialize resources
 let food = 10;
 let water = 10;
-let energy = 10;
+let energy = 100;
 const maxEnergy = 100;
 
 // Sync initial resource values with the HTML display
 document.getElementById("food").textContent = `${food}`;
 document.getElementById("water").textContent = `${water}`;
-document.getElementById("energy").textContent = `${energy} / ${maxEnergy}`;
 
 // Function to update the display
 function updateDisplay() {
   document.getElementById("food").textContent = `${food}`;
   document.getElementById("water").textContent = `${water}`;
-  document.getElementById("energy").textContent = `${energy} / ${maxEnergy}`;
+
+  // Update the energy gauge
+  const energyBar = document.getElementById("energy-bar");
+  const energyPercentage = (energy / maxEnergy) * 100;
+  energyBar.style.width = `${energyPercentage}%`;
 
   // Change the "rest" button color based on energy level
   const restButton = document.getElementById("restButton");
@@ -47,11 +50,24 @@ function drinkWater() {
 // Function to rest and regain energy
 function rest() {
   if (energy < maxEnergy) { // Limit energy to maxEnergy
-    energy += 1; // Increase energy count
+    energy += 10; // Regain 10 energy per rest
+    if (energy > maxEnergy) energy = maxEnergy; // Cap energy at max
     updateDisplay();
     console.log("Rested! Current energy:", energy);
   }
 }
+
+// Function to decrease energy over time
+function decreaseEnergy() {
+  if (energy > 0) {
+    energy -= 1; // Decrease energy by 1
+    updateDisplay();
+    console.log("Energy decreased. Current energy:", energy);
+  }
+}
+
+// Start the energy drain
+setInterval(decreaseEnergy, 5000); // Decrease energy every 5 seconds
 
 // Update the display when the game starts
 updateDisplay();
