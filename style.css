@@ -17,6 +17,28 @@ h1 {
   margin: 10px 0;
 }
 
+#energy-container {
+  margin-top: 15px;
+}
+
+#energy-gauge {
+  width: 300px;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 10px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#energy-bar {
+  height: 100%;
+  width: 100%; /* Default full energy */
+  background-color: #28a745;
+  border-radius: 10px;
+  transition: width 0.3s ease; /* Smooth transition for gauge changes */
+}
+
 button {
   font-size: 1rem;
   padding: 10px 20px;
