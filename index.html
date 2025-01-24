@@ -8,18 +8,16 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="game">
-    <h1>IdleGame</h1>
-    <div id="resources">
-      <p>Food: <span id="food">10</span></p>
-      <p>Water: <span id="water">10</span></p>
-      <p>Energy: <span id="energy">10</span></p>
-    </div>
-    <div id="actions">
-      <button onclick="gatherFood()">Gather Food</button>
-      <button onclick="drinkWater()">Drink Water</button>
-      <button onclick="rest()">Rest</button>
-    </div>
+  <h1>IdleGame</h1>
+  <div id="resources">
+    <p>Food: <span id="food"></span></p>
+    <p>Water: <span id="water"></span></p>
+    <p>Energy: <span id="energy"></span></p>
+  </div>
+  <div id="actions">
+    <button onclick="gatherFood()">Gather Food</button>
+    <button onclick="drinkWater()">Drink Water</button>
+    <button id="restButton" onclick="rest()">Rest</button>
   </div>
 </body>
 </html>
