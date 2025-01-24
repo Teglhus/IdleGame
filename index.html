@@ -10,43 +10,37 @@
 <body>
   <h1>IdleGame</h1>
   <div id="resources">
-    <div id="food-container">
+    <div class="resource-container">
       <p>Food:</p>
       <div class="gauge-container">
-        <span class="min-value">[0]</span>
         <div class="gauge">
           <div id="food-bar"></div>
         </div>
-        <span class="max-value">[10]</span>
+        <p id="food-indicator">0/10</p>
       </div>
-      <p id="food-indicator">0/10</p>
     </div>
-    <div id="water-container">
+    <div class="resource-container">
       <p>Water:</p>
       <div class="gauge-container">
-        <span class="min-value">[0]</span>
         <div class="gauge">
           <div id="water-bar"></div>
         </div>
-        <span class="max-value">[10]</span>
+        <p id="water-indicator">0/10</p>
       </div>
-      <p id="water-indicator">0/10</p>
     </div>
-    <div id="energy-container">
+    <div class="resource-container">
       <p>Energy:</p>
       <div class="gauge-container">
-        <span class="min-value">[0]</span>
         <div class="gauge">
           <div id="energy-bar"></div>
         </div>
-        <span class="max-value">[100]</span>
+        <p id="energy-indicator">0/100</p>
       </div>
-      <p id="energy-indicator">0/100</p>
     </div>
   </div>
   <div id="actions">
-    <button onclick="gatherFood()">Gather Food</button>
-    <button onclick="drinkWater()">Drink Water</button>
+    <button id="gatherFoodButton" onclick="gatherFood()">Gather Food</button>
+    <button id="drinkWaterButton" onclick="drinkWater()">Drink Water</button>
     <button id="restButton" onclick="rest()">Rest</button>
   </div>
 </body>

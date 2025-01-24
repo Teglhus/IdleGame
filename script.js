@@ -14,6 +14,7 @@ function updateDisplay() {
   foodBar.style.width = `${foodPercentage}%`;
   foodBar.style.backgroundColor = foodPercentage > 50 ? "green" : foodPercentage > 10 ? "yellow" : "red";
   document.getElementById("food-indicator").textContent = `${food}/${maxFood}`;
+  toggleButtonState("gatherFoodButton", food >= maxFood);
 
   // Update water gauge
   const waterBar = document.getElementById("water-bar");
@@ -21,6 +22,7 @@ function updateDisplay() {
   waterBar.style.width = `${waterPercentage}%`;
   waterBar.style.backgroundColor = waterPercentage > 50 ? "green" : waterPercentage > 10 ? "yellow" : "red";
   document.getElementById("water-indicator").textContent = `${water}/${maxWater}`;
+  toggleButtonState("drinkWaterButton", water >= maxWater);
 
   // Update energy gauge
   const energyBar = document.getElementById("energy-bar");
@@ -28,15 +30,18 @@ function updateDisplay() {
   energyBar.style.width = `${energyPercentage}%`;
   energyBar.style.backgroundColor = energyPercentage > 50 ? "green" : energyPercentage > 10 ? "yellow" : "red";
   document.getElementById("energy-indicator").textContent = `${energy}/${maxEnergy}`;
+  toggleButtonState("restButton", energy >= maxEnergy);
+}
 
-  // Update rest button state
-  const restButton = document.getElementById("restButton");
-  if (energy >= maxEnergy) {
-    restButton.classList.add("red");
-    restButton.disabled = true;
+// Helper function to toggle button states
+function toggleButtonState(buttonId, isMaxed) {
+  const button = document.getElementById(buttonId);
+  if (isMaxed) {
+    button.classList.add("red");
+    button.disabled = true;
   } else {
-    restButton.classList.remove("red");
-    restButton.disabled = false;
+    button.classList.remove("red");
+    button.disabled = false;
   }
 }
 
