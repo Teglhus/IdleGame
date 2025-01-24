@@ -18,6 +18,15 @@ function updateDisplay() {
   const energyPercentage = (energy / maxEnergy) * 100;
   energyBar.style.width = `${energyPercentage}%`;
 
+  // Change the color of the energy gauge based on energy level
+  if (energyPercentage > 50) {
+    energyBar.style.backgroundColor = "green";
+  } else if (energyPercentage > 10) {
+    energyBar.style.backgroundColor = "yellow";
+  } else {
+    energyBar.style.backgroundColor = "red";
+  }
+
   // Change the "rest" button color based on energy level
   const restButton = document.getElementById("restButton");
   if (energy >= maxEnergy) {
@@ -67,7 +76,7 @@ function decreaseEnergy() {
 }
 
 // Start the energy drain
-setInterval(decreaseEnergy, 5000); // Decrease energy every 5 seconds
+setInterval(decreaseEnergy, 1000); // Decrease energy every 1 second
 
 // Update the display when the game starts
 updateDisplay();
